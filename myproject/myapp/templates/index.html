@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Student List</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 24px;
+        }
+        body {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            letter-spacing: 4px;
+        }
+        table {
+            border: none;
+            border-collapse: collapse;
+        }
+        table td, table th {
+            border: none;
+        }
+        th, td {
+            padding: 20px;
+            text-align: center;
+        }
+        th {
+            background-color: #FFFFFF;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        #addBtn {
+            background-color: #4b972b;
+            width: 15%;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        
+        #addBtn:hover {
+            background-color: #6dc249;
+            transition: 0.3s;
+        }
+        .editBtn {
+            background-color: #0066CC;
+            width: 15%;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .editBtn:hover {
+            background-color: #0a79e7;
+            transition: 0.2s;
+        }
+        .deleteBtn {
+            background-color: #A31D1D;
+            width: 15%;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .deleteBtn:hover {
+            background-color: #b42929;
+            transition: 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <h1>STUDENT LIST</h1>
+    <button id="addBtn"><a href="addStudent/">Add Student</a></button>
+    <table border="1px">
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Date of Birth</th>
+            <th>Course</th>
+            <th>Enrollment Date</th>
+            <th>Actions</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.firstName }} {{student.lastName}}</td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.dateOfBirth }}</td>
+            <td>{{ student.course }}</td>
+            <td>{{ student.enrollmentDate }}</td>
+            <td>
+                <a href="editStudent/{{ student.id }}" class="editBtn"><i class="material-icons" style="font-size:24px;">edit</i></a>
+                <a href="deleteStudent/{{ student.id }} " class="deleteBtn"><i class="material-icons" style="font-size:24px">delete</i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <script src="{% static 'index.js' %}"></script>
+</body>
+</html>
