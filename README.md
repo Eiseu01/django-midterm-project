@@ -1,0 +1,1 @@
+# django-midterm-project
